@@ -1,0 +1,29 @@
+html, body {
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+body {
+    background: linear-gradient(135deg, rgb(64, 99, 206), #1E3888 50%, rgb(17, 35, 90));
+}
+canvas {
+    width: 500px;
+    height: 500px;
+    /* position: absolute;  */
+    z-index: 0;
+}
+.container {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    color: whitesmoke;
+    margin: auto;
+    position: absolute;
+    overflow: hidden;
+}
