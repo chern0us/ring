@@ -26,7 +26,7 @@ const cfg = {
     quantity: 150,
     centerX: window.innerWidth / 2,
     centerY: window.innerHeight / 2,
-    circleRadius: 110,
+    circleRadius: 150,
     alpha: 0.8,
 };
 const state = {
