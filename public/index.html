@@ -10,12 +10,16 @@
 </head>
 
 <body>
-    <div class="container">
-
-        <p class="text">Hover me</p>
+    <div class="container" id="container">
+        <div class="touchpad" id="touchpad">
+            <p class="text">Hover me</p>
+        </div>
         <canvas id="canvas"></canvas>
-
-
+    </div>
+    <div class="menu">
+        <div class="button active" id="bubble">Bubbles</div>
+        <div class="button" id="flow">Flow</div>
+        <div class="button" id="swap">Swap</div>
     </div>
     <script src="../dist/index.js"></script>
 </body>
