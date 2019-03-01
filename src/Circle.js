@@ -1,10 +1,7 @@
 import Vector from './Vector';
-import Rainbow from 'rainbowvis.js';
-const colorPalette = new Rainbow();
-colorPalette.setSpectrum('81F4E1', '5EC2B7', '#F4ACB7', '#339999', '81F4E1', '5EC2B7', '#F4ACB7');
-colorPalette.setNumberRange(0, 200);
+
 export default class Circle {
-    constructor(x, y, i) {
+    constructor(x, y, i, colorPalette) {
         this.i = i;
         this.pos = new Vector(x, y);
         this.speed = new Vector();
@@ -13,7 +10,8 @@ export default class Circle {
         this.maxSpeed = 0.5;
         this.target = this.pos.copy();
         this.initialTarget = this.pos.copy();
-        this.color = `#${colorPalette.colourAt(i)}`.toLocaleUpperCase();
+        this.colorPalette = colorPalette;
+        this.color = `#${this.colorPalette.colourAt(i)}`.toLocaleUpperCase();
         this.visible = true;
         this.radius = 10;
         this.initialRadius = 15;
@@ -29,11 +27,11 @@ export default class Circle {
         const y = (Math.sin(2 * Math.PI * i / totalPointsCount) * ringRadius) + y0;
         return new Vector(x, y);
     }
-    static makeRingCreator(x0, y0, ringRadius, totalPointsCount) {
+    static makeRingCreator(x0, y0, ringRadius, totalPointsCount, colorPalette) {
         return (i) => {
             const x = (Math.cos(2 * Math.PI * i / totalPointsCount) * ringRadius) + x0;
             const y = (Math.sin(2 * Math.PI * i / totalPointsCount) * ringRadius) + y0;
-            return new Circle(x, y, i);
+            return new Circle(x, y, i, colorPalette);
         };
     }
     setRadius(radius) {
@@ -94,6 +92,10 @@ export default class Circle {
     }
     setColor(color) {
         this.color = color;
+    }
+    setColorPalette(colorPalette) {
+        this.colorPalette = colorPalette;
+        this.setColor(`#${this.colorPalette.colourAt(this.i)}`.toLocaleUpperCase());
     }
     draw(ctx) {
         const { pos, radius, color } = this;
