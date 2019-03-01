@@ -1,0 +1,125 @@
+
+
+h1 {
+  margin: auto;
+  padding: 1em;
+}
+
+
+.swatch {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 95%;
+  height: 30px;
+  border: 2px gray dotted;
+  border-radius: 20px;
+}
+
+
+.slider-container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 95%;
+  height: 30px;
+  border: 2px white solid;
+  border-radius: 20px;
+}
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 30px; /* Specified height */
+  outline: none; /* Remove outline */
+  margin:0 auto;
+  
+}
+.slider::-webkit-slider-thumb:hover {
+  border: 2px  rgba(151, 174, 243, 0.8) solid;
+  
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+
+  appearance: none;
+  width: 28px; /* Set a specific slider handle width */
+  height: 28px; /* Slider handle height */
+  border-radius: 30px;
+  border: 2px  rgba(255, 255, 255, 0.8) solid;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 28px; /* Set a specific slider handle width */
+  height: 28px; /* Slider handle height */
+  border-radius: 30px;
+  border: 2px  rgba(64, 99, 206, 0.8) solid;
+  cursor: pointer; /* Cursor on hover */
+}
+form {
+  margin: auto;
+}
+
+input {
+  width: 100%;
+}
+
+.hue {
+  background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 2px white solid;
+  border-radius: 20px;
+}
+
+.satcolor {
+  background-color:  transparent;
+}
+
+.sat {
+  background-image: linear-gradient(to right, #494949 0%, transparent 100%), linear-gradient(to right, #fff 0%, transparent 0%);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 2px white solid;
+  border-radius: 20px;
+}
+
+.light {
+  background-image: linear-gradient(to right, #000 0%, transparent 100%), linear-gradient(to right, #fff 0%, transparent 100%);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 2px white solid;
+  border-radius: 20px;
+}
+
+
+.alpha {
+  background-image: linear-gradient(to right, hsla(0, 0%, 53%, 0.698), hsla(0, 0%, 29%, 0.698));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 2px white solid;
+  border-radius: 20px;
+}
