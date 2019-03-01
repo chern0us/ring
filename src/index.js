@@ -26,7 +26,7 @@ var colorlistA = new Vue({
             const swatch = document.getElementById('color');
             const color = swatch.value;
             if (colorlistA.items.length < 20)
-                colorlistA.items = [...colorlistA.items, { colorcell: { color } }];
+                colorlistA.items = [...colorlistA.items, { colorcell: { color, id: uniqueId() } }];
             const colors = colorlistA.$data.items.map(item => item.colorcell.color);
             colorPalette.setSpectrum(...colors);
             bg.applyOnEach(c => c.setColorPalette(colorPalette));
