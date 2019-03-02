@@ -4,7 +4,12 @@ h1 {
   margin: auto;
   padding: 1em;
 }
-
+.picker.active {
+  display: inherit;
+}
+.picker {
+  display: none;
+}
 
 .swatch {
   margin-left: auto;
@@ -16,8 +21,9 @@ h1 {
   -webkit-box-sizing: border-box;
   width: 95%;
   height: 30px;
-  border: 2px gray dotted;
   border-radius: 20px;
+  border: 2px white solid;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 

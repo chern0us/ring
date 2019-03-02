@@ -53,6 +53,10 @@ const flow = document.getElementById('flow');
 const swap = document.getElementById('swap');
 const bubble = document.getElementById('bubble');
 const ctx = canvas.getContext('2d');
+const colorpicker = document.getElementById('colorpicker');
+const colorlistDom = document.getElementById('colorlist');
+const picker = document.getElementById('picker');
+const colorHeader = document.getElementById('colorpicker-header');
 const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -67,7 +71,7 @@ const resizeCanvas = () => {
 };
 
 const cfg = {
-    quantity: 150,
+    quantity: window.innerWidth > 425 ? 150 : 90,
     centerX: window.innerWidth / 2,
     centerY: window.innerHeight / 2,
     circleRadius: 150,
@@ -76,7 +80,7 @@ const cfg = {
 const state = {
     mouseX: 0,
     mouseY: 0,
-    active: false,
+    active: true,
 };
 
 
@@ -143,7 +147,7 @@ cfg.flow = (c, i, circles) => {
     }
     c.lookFor().update();
 };
-bg.createLayer('ring', ctx, creator, 150).draw();
+bg.createLayer('ring', ctx, creator, cfg.quantity).draw();
 bg.setAnimation(cfg.bubble, 'ring');
 
 const tick = () => {
@@ -163,10 +167,25 @@ window.addEventListener('mousemove', (e) => {
     const pos = getMousePos(canvas, e);
     state.mouseX = pos.x;
     state.mouseY = pos.y;
-    state.active = true;
+    var a = pos.x - cfg.centerX;
+    var b = pos.y - cfg.centerY;
+    var c = Math.sqrt(a * a + b * b);
+    if (c < cfg.circleRadius) {
+        state.active = true;
+    }
 });
-canvas.addEventListener('mouseleave', () => { state.active = false; });
-
+window.addEventListener('touchmove', (e) => {
+    const pos = getMousePos(canvas, e.touches[0]);
+    state.mouseX = pos.x;
+    state.mouseY = pos.y;
+    var a = pos.x - cfg.centerX;
+    var b = pos.y - cfg.centerY;
+    var c = Math.sqrt(a * a + b * b);
+    if (c < cfg.circleRadius) {
+        state.active = true;
+    }
+});
+window.addEventListener('touchend', () => state.active = false);
 
 window.onresize = resizeCanvas;
 const changeFunction = (e) => {
@@ -184,8 +203,10 @@ const changeFunction = (e) => {
     flow.classList = getClass('flow');
     bubble.classList = getClass('bubble');
     swap.classList = getClass('swap');
+    state.active = false;
 
 };
+
 flow.onclick = changeFunction;
 bubble.onclick = changeFunction;
 swap.onclick = changeFunction;
@@ -196,22 +217,8 @@ alphaInput.addEventListener('input', (e) => {
     cfg.alpha = alpha;
     ctx.globalAlpha = alpha;
 });
-
-// colorpicker.onmousedown = () => {
-
-//     const className = classnames('colorpicker', { active: true });
-//     const listClassName = classnames('colorlist', { active: true });
-//     colorpicker.classList = className;
-//     colorlist.classList = listClassName;
-
-//     clearTimeout(timer);
-
-// };
-// colorpicker.onmouseleave = () => {
-//     timer = setTimeout(function () {
-//         const className = classnames('colorpicker', { active: false });
-//         const listClassName = classnames('colorlist', { active: false });
-//         colorpicker.classList = className;
-//         colorlist.classList = listClassName;
-//     }, delay);
-// };
+colorHeader.onclick = () => {
+    colorpicker.classList.toggle('active');
+    colorlistDom.classList.toggle('active');
+    picker.classList.toggle('active');
+};

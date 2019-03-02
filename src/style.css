@@ -4,9 +4,12 @@ html, body {
     width: 100%;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 body {
     background: linear-gradient(135deg, rgb(64, 99, 206), #1E3888 50%, rgb(17, 35, 90));
+    position: relative;
+    z-index: 0;
 }
 canvas {
     width: 100%;
@@ -19,20 +22,6 @@ canvas {
     height: 100%;
     justify-content: center;
     align-items: center;
-    /* overflow: hidden; */
-    /* z-index: 1; */
-}
-.touchpad {
-    z-index: 1;
-    position: absolute;
-    display: flex;
-    width: 600px;
-    height: 600px;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.04);
-    border: 2px rgba(0, 0, 0, 0.02) solid;
 
 }
 .text {
@@ -61,7 +50,23 @@ canvas {
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 }
-
+.description.head {
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 15px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1em;
+    align-self: center;
+    color: grey;
+    overflow: hidden;
+    font-weight: normal;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+     user-select: none; /* Standard */
+}
 .button
 {
     font-weight: bold;
@@ -86,10 +91,11 @@ canvas {
 }
 .colorpicker {
     position: absolute;
-    z-index: 3;
+    z-index: 10;
+    display: block;
     margin-top: 3vh;;
     margin-left: 2vh;
-    width: 30px;
+    width: auto;
     height: 30px;
     background-color: #fff;
     border-radius: 30px; 
@@ -100,19 +106,19 @@ canvas {
     border-radius: 10px; 
     height: auto;
 }
-.colorlist.active {
-    visibility: visible;
-    opacity: 1;
-}
+
 .colorlist {
-    visibility: hidden;
+    display: none;
+}
+.colorlist.active {
+    z-index: 11;
+    display: inherit;
     width: auto;
-    opacity: 0;
-    transition: visibility 0.8s, opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .colorcell{
     margin-left: auto;
     margin-right: auto;
+    z-index: 12;
     margin-top: 5px;
     margin-bottom: 5px;
     box-sizing: border-box;
@@ -121,9 +127,11 @@ canvas {
     width: 95%;
     height: 30px;
     border: 2px white solid;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
     border-radius: 20px;
 }
 .list-item {
+    z-index: 11;
     display: block;
   }
   .list-enter-active {
@@ -177,7 +185,7 @@ li  {
 }
 .menu {
     display: block;
-    z-index: 10;
+    z-index: 9;
     position: absolute;
     justify-self: end;
     right: 0;
